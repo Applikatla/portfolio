@@ -101,8 +101,24 @@ export const About = () => {
       GitHub
     </div>
     <div className={`sm:w-[150px] flex flex-col items-center justify-center ${commonStyles}`}>
-    <img className="py-5 w-1/2" src="/images/react-original.svg" alt="reactImg" />
-      GitHub
+    <img className="py-5 w-1/2 bg-gray-600" src="/images/blockchain-svgrepo-com.svg" alt="reactImg" />
+      Blockchain
+    </div>
+    <div className={`sm:w-[150px] flex flex-col items-center justify-center ${commonStyles}`}>
+    <img className="py-5 w-1/2" src="/images/ethereum-foundation-seeklogo.svg" alt="reactImg" />
+      Ethereum
+    </div>
+    <div className={`sm:w-[150px] flex flex-col items-center justify-center ${commonStyles}`}>
+    <img className="py-5 w-1/2" src="/images/truffle-seeklogo.svg" alt="reactImg" />
+      Truffle
+    </div>
+    <div className={`sm:w-[150px] flex flex-col items-center justify-center ${commonStyles}`}>
+    <img className="py-5 w-1/2" src="/images/hardhat-seeklogo.svg" alt="reactImg" />
+      Hardhat
+    </div>
+    <div className={`sm:w-[150px] flex flex-col items-center justify-center ${commonStyles}`}>
+    <img className="py-5 w-1/2" src="/images/ganache-seeklogo.svg" alt="reactImg" />
+      Ganache
     </div>
     <div className={`sm:w-[150px] flex flex-col items-center justify-center ${commonStyles}`}>
     <img className="py-5 w-1/2" src="/images/tailwindcss-original.svg" alt="tailwindImg" />

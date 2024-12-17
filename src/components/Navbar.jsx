@@ -48,6 +48,18 @@ const Navbar = () => {
               <span className="text-red-600">C</span>ontact
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/projects"
+              className={({ isActive }) =>
+                isActive
+                  ? "underline decoration-red-600 font-bold"
+                  : "hover:underline decoration-red-600"
+              }
+            >
+              <span className="text-red-600">P</span>rojects
+            </NavLink>
+          </li>
         </ul>
       </div>
     </>
