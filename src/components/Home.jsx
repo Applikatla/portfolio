@@ -41,7 +41,7 @@ export const Home = () => {
             <button className="h-10 text-xl" onClick={handle}> --- know more</button>
           </div>
           <div className="py-10 md:w-1/4 sm:w-1/2 flex justify-center">
-            <img className="rounded-2xl" src="/images/keshav.jpg" alt="img" />
+            <img className="rounded-2xl" src="/images/keshav1.jpg" alt="img" />
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
-import { Fotter } from "./Fotter";
+import { Fotter } from "./Footer";
 
 export const About = () => {
   const commonStyles =
@@ -21,7 +21,7 @@ export const About = () => {
     <>
       <Navbar />
       <section className="About mt-20">
-        <div className="text-left py-5 px-10 font-bold text-lg">
+        <div className="text-left py-5 px-20 font-bold text-lg">
           <p>
             Hi, I'm Keshavardhan! I'm currently pursuing Computer Science and
             Engineering at Vellore Institute of Technology, Vellore.

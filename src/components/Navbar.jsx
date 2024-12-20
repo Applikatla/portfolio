@@ -10,7 +10,8 @@ const Navbar = () => {
             K
           </span>
           eshav
-        </span>
+        </span>  
+      
         <ul className="flex gap-5 font-bold ">
           <li>
             <NavLink

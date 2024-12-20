@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Fotter } from './Fotter';
+import { Fotter } from './Footer';
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
@@ -71,7 +71,7 @@ export const Contact = () => {
   return (
     <>
       <Navbar />
-      <section className='form mt-5'>
+      <section className='form'>
     
       <div className="flex justify-center ">
         <div className="p-5 sm:w-96 w-full flex flex-col justify-center items-center">
@@ -113,6 +113,10 @@ export const Contact = () => {
           <br />
           <div>My email: keshavardhan525@gmail.com</div>
           <div>My Phno: 9381852917</div>
+          <div className='flex gap-5'>
+          <a className='transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg' href="https://github.com/Applikatla" target="_blank"><img className="git bg-gray-600 rounded-xl" src="images/github-original.svg" alt="githubImg" /></a>
+        <a className='transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg' href="https://www.linkedin.com/in/keshavardhan-appikatla-39063322a/" target="_blank"><img className="git bg-gray-600 rounded-xl" src="images/LinkedIn_icon.svg" alt="githubImg" /></a>
+          </div>
         </div>
       </div>
             </section>

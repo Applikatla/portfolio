@@ -92,6 +92,12 @@ body {
 .preview {
   width: 20px;
 }
+.git {
+  width: 25px;
+}
+.blue {
+  color: skyblue
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
