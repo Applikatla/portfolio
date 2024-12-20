@@ -29,8 +29,8 @@ export const Home = () => {
       <Navbar />
 
       {/* Main Content */}
-      <section className="py-5">
-        <div className="flex flex-col md:flex-row justify-center py-10 font-bold text-3xl">
+      <section className="flex items-center py-5">
+        <div className="flex flex-col md:flex-row justify-center items-center py-10 font-bold text-3xl">
           <div className="md:w-1/2 text-center space-y-4 py-20">
           <h1 className="">
           <span className="text-red-600 ">
