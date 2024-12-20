@@ -10,7 +10,7 @@ export const Projects = () => {
       <Navbar />
       <section className="projects">
         <div className="mt-20 text-center text-3xl mb-5">Projects</div>
-        <div className="text-left px-10">
+        <div className="text-left px-10 mb-20">
           <div>
             <h1>-- Fake signature detection:</h1>
             <br />
