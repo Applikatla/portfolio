@@ -77,7 +77,7 @@ export const About = () => {
           <button onClick={handleClick}>-- let's connect</button>
         </div>
       </section>
-      <section className="Skills">
+      <section className="Skills mb-28">
         <div className="text-center text-3xl mb-5">Skills</div>
         <div className="px-5 flex flex-wrap gap-5 justify-center">
           <div

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <div className="container bg-black mx-auto flex justify-between items-center px-20 py-5 fixed w-full z-10 top-0 shadow-lg">
+      <div className="nav bg-black mx-auto flex justify-between items-center px-20 py-5 fixed z-10 top-0 shadow-lg w-full">
         <span className="cursor-pointer">
           <span className="text-red-600 font-bold hover:underline decoration-red-600 cursor-pointer">
             K
