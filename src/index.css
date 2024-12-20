@@ -98,6 +98,26 @@ body {
 .blue {
   color: skyblue
 }
+.footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff; /* Adjust text color */
+  padding: 10px 0;
+  z-index: 10; /* Ensure it stays above other elements */
+}
+.foot {
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff; /* Adjust text color */
+  padding: 10px 0;
+  z-index: 10; /* Ensure it stays above other elements */
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Footer } from "./Footer";
 export const Home = () => {
   const navigate = useNavigate();
   const [Text, setText] = useState("");
@@ -45,6 +46,10 @@ export const Home = () => {
           </div>
         </div>
       </section>
+      <div className="foot">
+
+      <Footer/>
+      </div>
     </>
   );
 };

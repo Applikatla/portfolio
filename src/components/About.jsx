@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
-import { Fotter } from "./Footer";
+import { Footer} from "./Footer";
 
 export const About = () => {
   const commonStyles =
@@ -262,7 +262,7 @@ export const About = () => {
           </div>
         </div>
       </section>
-      <Fotter />
+      <Footer/>
     </>
   );
 };

@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Fotter } from './Footer';
+import { Footer } from './Footer';
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
@@ -74,7 +74,7 @@ export const Contact = () => {
       <section className='form'>
     
       <div className="flex justify-center ">
-        <div className="p-5 sm:w-96 w-full flex flex-col justify-center items-center">
+        <div className="p-3 sm:w-96 w-full flex flex-col justify-center items-center">
           <div className="text-left">Your Name</div>
           <Input
             placeholder="Your Name"
@@ -120,7 +120,7 @@ export const Contact = () => {
         </div>
       </div>
             </section>
-          <Fotter/> 
+          <Footer/> 
       <ToastContainer />
     </>
   );
