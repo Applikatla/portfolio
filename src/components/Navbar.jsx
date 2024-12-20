@@ -11,7 +11,7 @@ const Navbar = () => {
           </span>
           eshav
         </span>  
-      
+        
         <ul className="flex gap-5 font-bold ">
           <li>
             <NavLink
