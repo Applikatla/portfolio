@@ -56,7 +56,7 @@ export const About = () => {
               -- Download Resume{" "}
               <button>
                 <a
-                  href="https://drive.google.com/file/d/177WhlC4r2H-_ypjiKZzKoRWFIFsghu5S/view?usp=sharing"
+                  href="https://drive.google.com/file/d/10BHUrenDbNBr8VPx3kZv3t8jMrAjE0Ps/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
