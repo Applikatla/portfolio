@@ -78,6 +78,18 @@ const Navbar = () => {
               <span className="text-red-600">P</span>rojects
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/experience"
+              className={({ isActive }) =>
+                isActive
+                  ? "underline decoration-red-600 font-bold"
+                  : "hover:underline decoration-red-600"
+              }
+            >
+              <span className="text-red-600">E</span>xperience
+            </NavLink>
+          </li>
         </ul>
 
         {/* Dropdown Menu */}
@@ -133,6 +145,19 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
               >
                 <span className="text-red-600">P</span>rojects
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/experience"
+                className={({ isActive }) =>
+                  isActive
+                    ? "underline decoration-red-600 font-bold text-white"
+                    : "hover:underline decoration-red-600 text-white"
+                }
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="text-red-600">E</span>xperience
               </NavLink>
             </li>
           </ul>
