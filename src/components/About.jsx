@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Footer } from "./Footer";
 import { motion } from "framer-motion";
 import { Download, MessageCircle, ArrowRight, ExternalLink } from "lucide-react";
+import { HackerTerminal } from "./HackerTerminal";
 
 export const About = () => {
   const navigate = useNavigate();
@@ -149,6 +150,21 @@ export const About = () => {
               ))}
             </motion.div>
           </motion.div>
+        </motion.div>
+
+        {/* Hacker Terminal Section */}
+        <motion.div 
+          variants={itemVariants}
+          className="mt-32 w-full"
+        >
+          <div className="text-center mb-12 space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              System <span className="text-gradient-primary">Initialization</span>
+            </h2>
+            <div className="h-1 w-16 bg-primary rounded-full mx-auto"></div>
+            <p className="text-gray-400">Booting up the decentralized backend...</p>
+          </div>
+          <HackerTerminal />
         </motion.div>
       </main>
 

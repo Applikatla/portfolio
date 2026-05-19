@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Footer } from "./Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Terminal, Blocks, Server, ShieldCheck } from "lucide-react";
+import { Magnetic } from "./Magnetic";
 
 const TITLES = [
   "Backend Developer",
@@ -158,21 +159,25 @@ export const Home = () => {
             </motion.p>
             
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 pt-6 w-full justify-center lg:justify-start">
-              <button 
-                onClick={handleProjects}
-                className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-red-600 transition-all duration-300 shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_40px_rgba(239,68,68,0.5)] transform hover:-translate-y-1 relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-2xl"></div>
-                <span className="relative z-10">Explore My Work</span>
-                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <Magnetic>
+                <button 
+                  onClick={handleProjects}
+                  className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-red-600 transition-all duration-300 shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_40px_rgba(239,68,68,0.5)] relative overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-2xl"></div>
+                  <span className="relative z-10">Explore My Work</span>
+                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Magnetic>
               
-              <button 
-                onClick={handleContact}
-                className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-md transform hover:-translate-y-1"
-              >
-                Contact Me
-              </button>
+              <Magnetic>
+                <button 
+                  onClick={handleContact}
+                  className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-md"
+                >
+                  Contact Me
+                </button>
+              </Magnetic>
             </motion.div>
           </div>
 
@@ -298,21 +303,25 @@ export const Home = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 pt-16 w-full justify-center">
-          <button 
-            onClick={handleProjects}
-            className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-red-600 transition-all duration-300 shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_40px_rgba(239,68,68,0.5)] transform hover:-translate-y-1 relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-2xl"></div>
-            <span className="relative z-10">Explore My Work</span>
-            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-          </button>
+          <Magnetic>
+            <button 
+              onClick={handleProjects}
+              className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-red-600 transition-all duration-300 shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_40px_rgba(239,68,68,0.5)] relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-2xl"></div>
+              <span className="relative z-10">Explore My Work</span>
+              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </Magnetic>
           
-          <button 
-            onClick={handleContact}
-            className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-md transform hover:-translate-y-1"
-          >
-            Contact Me
-          </button>
+          <Magnetic>
+            <button 
+              onClick={handleContact}
+              className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-md"
+            >
+              Contact Me
+            </button>
+          </Magnetic>
         </div>
       </section>
 
