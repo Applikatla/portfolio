@@ -8,7 +8,7 @@ export const Projects = () => {
   const projects = [
     {
       title: "Blockchain Computing",
-      description: "A blockchain-based application where users can send transactions across the world, verify them using Merkle trees, create a basic DAO, and store files on the blockchain.",
+      description: "Developed a Blockchain-based Payment Gateway on the Ethereum network enabling secure cryptocurrency transactions, wallet authentication, and Merkle proof verification for blockchain transaction integrity. Built the frontend using React and integrated MetaMask for seamless wallet connection and transaction execution, while leveraging ethers.js for smart contract interaction. Designed and deployed Solidity smart contracts using Hardhat and Alchemy, implementing secure ETH payment handling and on-chain Merkle root verification. The backend was developed with Node.js and Express.js to fetch blockchain transactions, construct Merkle trees, generate cryptographic proofs, and expose APIs for proof validation. The project demonstrated strong expertise in Web3 development, smart contract engineering, blockchain verification mechanisms, and decentralized application (dApp) architecture.",
       tech: ["Blockchain", "Hardhat", "Solidity", "React", "Node", "MetaMask"],
       github: "https://github.com/Applikatla/Blockchain_computing",
     },
@@ -29,6 +29,12 @@ export const Projects = () => {
       description: "Developed a decentralized Vesting Smart Contract using Solidity to securely manage time-based release of cryptocurrency funds for beneficiaries. The contract implemented linear vesting logic, allowing tokens or ETH to be gradually unlocked over a predefined duration instead of being released all at once. Built features including beneficiary-based access control, automated vested amount calculation, secure fund release mechanisms, balance tracking, and event emission for transparency and auditability. The project focused on secure smart contract development practices, state management, and blockchain-based financial automation, demonstrating strong understanding of Ethereum, Solidity, and decentralized finance (DeFi) concepts.",
       tech: ["Blockchain", "Solidity", "Ethereum"],
       github: "https://github.com/Applikatla/vesting-appliction",
+    },
+    {
+      title: "User Auth With Hyperledger Fabric",
+      description: "Developed a decentralized User Authentication and Identity Management system using the Hyperledger Fabric blockchain framework and Fabric CA for secure user registration, enrollment, and authentication. Implemented a complete authentication workflow using Node.js, Express.js, and the Hyperledger Fabric SDK, enabling secure identity issuance, wallet-based credential management, and blockchain-backed access verification. The project included integration with Fabric CA for user enrollment, X.509 certificate generation, wallet identity storage, and smart contract interaction through secure gateway connections. Designed REST APIs for user registration and login, allowing authenticated users to interact with blockchain assets while ensuring tamper-resistant identity validation and enterprise-grade security.",
+      tech: ["Blockchain", "Hyperledger Fabric", "Fabric CA", "Node", "Express"],
+      github: "https://github.com/Applikatla/user_auth_by_hyperledger",
     },
     {
       title: "Fake Signature Detection",
