@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     let keySequence = '';
     const secretCode = 'matrix';
-    
+
     const handleKeyDown = (e) => {
       // Ignore if user is typing in an input
       if (e.target.tagName.toLowerCase() === 'input' || e.target.tagName.toLowerCase() === 'textarea') return;
@@ -55,11 +55,11 @@ function App() {
           <ToastContainer theme={matrixMode ? "dark" : "light"} />
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
-              <Route path='/' element={<PageTransition><Home/></PageTransition>}></Route>
-              <Route path='/about' element={<PageTransition><About/></PageTransition>}></Route>
-              <Route path='/contact' element={<PageTransition><Contact/></PageTransition>}></Route>
-              <Route path='/projects' element={<PageTransition><Projects/></PageTransition>}></Route>
-              <Route path='/experience' element={<PageTransition><Experience/></PageTransition>}></Route>
+              <Route path='/' element={<PageTransition><Home /></PageTransition>}></Route>
+              <Route path='/about' element={<PageTransition><About /></PageTransition>}></Route>
+              <Route path='/contact' element={<PageTransition><Contact /></PageTransition>}></Route>
+              <Route path='/projects' element={<PageTransition><Projects /></PageTransition>}></Route>
+              <Route path='/experience' element={<PageTransition><Experience /></PageTransition>}></Route>
             </Routes>
           </AnimatePresence>
         </>

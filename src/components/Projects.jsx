@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Navbar from "./Navbar";
 import { Footer } from "./Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,6 +7,17 @@ import { ExternalLink, Code2, X } from "lucide-react";
 
 export const Projects = () => {
   const [activeProject, setActiveProject] = useState(null);
+
+  useEffect(() => {
+    if (activeProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeProject]);
 
   const projects = [
     {
@@ -170,85 +182,104 @@ export const Projects = () => {
         </motion.div>
       </main>
 
-      <Footer />
-
-      {/* Project Modal */}
-      <AnimatePresence>
-        {activeProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActiveProject(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-          >
+      <Footer />      {/* Project Modal */}
+      {createPortal(
+        <AnimatePresence>
+          {activeProject && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-card rounded-3xl p-8 border border-white/10 shadow-2xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveProject(null)}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/80 backdrop-blur-md"
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setActiveProject(null)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition-colors"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 30 }}
+                transition={{ type: "spring", damping: 25, stiffness: 350 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-[#0a0a0c]/95 border border-white/[0.08] rounded-[2rem] p-8 md:p-10 shadow-[0_0_80px_rgba(0,0,0,0.9)] custom-scrollbar"
               >
-                <X size={20} />
-              </button>
+                {/* Premium Glow Effect inside Modal */}
+                <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full filter blur-[100px] pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full filter blur-[100px] pointer-events-none"></div>
 
-              <div className="flex items-center gap-3 mb-6 pr-12">
-                <div className="p-3 bg-white/5 rounded-xl text-primary flex-shrink-0">
-                  <Code2 size={24} />
-                </div>
-                <h2 className="text-3xl font-bold text-white">
-                  {activeProject.title}
-                </h2>
-              </div>
+                {/* Close Button */}
+                <motion.button
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setActiveProject(null)}
+                  className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-gray-400 hover:bg-primary/20 hover:text-white border border-white/10 transition-colors z-20"
+                >
+                  <X size={18} />
+                </motion.button>
 
-              <div className="prose prose-invert max-w-none">
-                <p className="text-gray-300 text-lg leading-relaxed whitespace-pre-line mb-8">
-                  {activeProject.description}
-                </p>
-              </div>
+                <div className="relative z-10 space-y-8">
+                  {/* Header */}
+                  <div className="flex items-center gap-4 border-b border-white/[0.08] pb-6">
+                    <div className="p-4 bg-primary/10 rounded-2xl text-primary border border-primary/20 shadow-[0_0_20px_rgba(239,68,68,0.15)] flex-shrink-0">
+                      <Code2 size={28} />
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-xs uppercase tracking-[0.3em] text-primary font-bold font-mono">Project Case Study</span>
+                      <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+                        {activeProject.title}
+                      </h2>
+                    </div>
+                  </div>
 
-              <div className="space-y-6">
-                <div className="flex flex-wrap gap-2">
-                  {activeProject.tech.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-white/5 text-gray-300 text-sm font-medium rounded-full border border-white/5"
+                  {/* Description */}
+                  <div className="text-gray-300 text-base md:text-lg leading-relaxed space-y-4 max-h-[35vh] overflow-y-auto pr-2 custom-scrollbar">
+                    <p className="whitespace-pre-line text-gray-300/95 font-light">
+                      {activeProject.description}
+                    </p>
+                  </div>
+
+                  {/* Tech Stack */}
+                  <div className="space-y-3">
+                    <h4 className="text-xs uppercase tracking-[0.2em] text-gray-400 font-bold font-mono">Engineered With</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {activeProject.tech.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-4 py-2 bg-white/5 text-gray-300 text-sm font-medium rounded-xl border border-white/10 hover:border-primary/30 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Actions / Links */}
+                  <div className="pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row gap-4 items-center justify-between">
+                    <a
+                      href={activeProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto flex items-center justify-center gap-3 px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-gray-300 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                      <img src="/images/github-original.svg" alt="GitHub" className="w-5 h-5 opacity-70 group-hover:opacity-100 invert transition-opacity" />
+                      <span className="font-semibold text-base">Explore Repository</span>
+                    </a>
 
-                <div className="pt-6 border-t border-white/10 flex items-center justify-between">
-                  <a
-                    href={activeProject.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-                  >
-                    <img src="/images/github-original.svg" alt="GitHub" className="w-6 h-6 opacity-70 hover:opacity-100 invert" />
-                    <span className="font-medium text-lg">View Source Code</span>
-                  </a>
-
-                  <a
-                    href={activeProject.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
-                  >
-                    <ExternalLink size={20} />
-                  </a>
+                    <a
+                      href={activeProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-extrabold rounded-2xl hover:bg-primary/90 shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_30px_rgba(239,68,68,0.5)] transition-all duration-300"
+                    >
+                      <span>Launch Project</span>
+                      <ExternalLink size={18} />
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
     </div>
   );

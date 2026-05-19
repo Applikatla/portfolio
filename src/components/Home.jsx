@@ -18,15 +18,15 @@ const TechMarquee = () => {
   const techs = [
     "Go", "React", "Node.js", "Solidity", "PostgreSQL", "Kafka", "Redis", "gRPC", "Docker", "NestJS", "Hyperledger", "Cosmos SDK"
   ];
-  
+
   return (
     <div className="w-full overflow-hidden py-16 relative bg-[#050505] border-y border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] z-20">
       {/* Gradient masks for smooth fade on edges */}
       <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#050505] to-transparent z-10"></div>
       <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#050505] to-transparent z-10"></div>
-      
+
       <div className="flex whitespace-nowrap">
-        <motion.div 
+        <motion.div
           className="flex gap-12 md:gap-24 px-6 md:px-12 items-center w-max"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
@@ -104,11 +104,11 @@ export const Home = () => {
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden bg-[#050505]">
       {/* Immersive Animated Background Layers */}
-      <motion.div 
+      <motion.div
         variants={blobVariants} animate="animate"
         className="fixed top-[10%] left-[10%] w-[500px] h-[500px] bg-primary/20 rounded-full filter blur-[120px] z-0 pointer-events-none"
       />
-      <motion.div 
+      <motion.div
         variants={blobVariants2} animate="animate"
         className="fixed bottom-[10%] right-[10%] w-[600px] h-[600px] bg-blue-600/15 rounded-full filter blur-[150px] z-0 pointer-events-none"
       />
@@ -118,7 +118,7 @@ export const Home = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 px-6 z-10 w-full">
-        <motion.div 
+        <motion.div
           className="max-w-7xl w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-8 pb-20"
           variants={containerVariants}
           initial="hidden"
@@ -138,10 +138,10 @@ export const Home = () => {
                   Keshavardhan
                 </span>
               </h1>
-              
+
               <div className="h-12 sm:h-16 flex items-center justify-center lg:justify-start overflow-hidden pt-2">
                 <AnimatePresence mode="wait">
-                  <motion.h2 
+                  <motion.h2
                     key={titleIndex}
                     initial={{ y: 40, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -154,14 +154,14 @@ export const Home = () => {
                 </AnimatePresence>
               </div>
             </motion.div>
-            
+
             <motion.p variants={itemVariants} className="text-lg sm:text-xl text-gray-400 max-w-2xl leading-relaxed">
               I build scalable backends, secure blockchain infrastructure, and immersive web experiences. Let's engineer the future together.
             </motion.p>
-            
+
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 pt-6 w-full justify-center lg:justify-start">
               <Magnetic>
-                <button 
+                <button
                   onClick={handleProjects}
                   className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-red-600 transition-all duration-300 shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_40px_rgba(239,68,68,0.5)] relative overflow-hidden"
                 >
@@ -170,9 +170,9 @@ export const Home = () => {
                   <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Magnetic>
-              
+
               <Magnetic>
-                <button 
+                <button
                   onClick={handleContact}
                   className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-md"
                 >
@@ -183,12 +183,12 @@ export const Home = () => {
           </div>
 
           {/* Interactive 3D Profile Image */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="lg:w-[45%] flex justify-center items-center relative perspective-[1000px] mt-10 lg:mt-0"
           >
             {/* Center Image Container */}
-            <motion.div 
+            <motion.div
               className="relative z-10 w-64 h-64 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px]"
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -196,12 +196,12 @@ export const Home = () => {
               {/* Complex Glowing Borders */}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary via-orange-500 to-blue-600 rounded-[2.5rem] blur-2xl opacity-40 animate-[spin_10s_linear_infinite]"></div>
               <div className="absolute inset-2 bg-background rounded-[2.5rem] z-10"></div>
-              
+
               <div className="absolute inset-0 rounded-[2.5rem] p-[2px] bg-gradient-to-tr from-primary via-white/50 to-blue-600 z-20 overflow-hidden shadow-2xl">
-                <img 
-                  className="w-full h-full object-cover rounded-[2.5rem] scale-[1.02] hover:scale-110 transition-transform duration-700" 
-                  src="/images/keshav1.jpg" 
-                  alt="Keshavardhan Appikatla" 
+                <img
+                  className="w-full h-full object-cover rounded-[2.5rem] scale-[1.02] hover:scale-110 transition-transform duration-700"
+                  src="/images/keshav1.jpg"
+                  alt="Keshavardhan Appikatla"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               </div>
@@ -211,13 +211,13 @@ export const Home = () => {
                 <motion.div
                   key={idx}
                   className={`absolute ${icon.position} ${icon.size} z-30 flex items-center justify-center shadow-[0_0_30px_rgba(0,0,0,0.5)]`}
-                  animate={{ 
-                    y: [0, -20, 0], 
-                    rotate: [0, 10, -10, 0] 
+                  animate={{
+                    y: [0, -20, 0],
+                    rotate: [0, 10, -10, 0]
                   }}
-                  transition={{ 
-                    duration: 5 + idx, 
-                    repeat: Infinity, 
+                  transition={{
+                    duration: 5 + idx,
+                    repeat: Infinity,
                     ease: "easeInOut",
                     delay: icon.delay
                   }}
@@ -230,15 +230,15 @@ export const Home = () => {
         </motion.div>
 
         {/* Scroll Indicator */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none"
         >
           <span className="text-xs text-gray-500 uppercase tracking-widest font-medium">Scroll to Explore</span>
-          <motion.div 
-            animate={{ y: [0, 8, 0] }} 
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center p-1"
           >
@@ -255,7 +255,7 @@ export const Home = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen z-[-1]">
           <ParallaxText baseVelocity={-200}>ARCHITECTURE</ParallaxText>
         </div>
-        
+
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold text-white">
             Core <span className="text-gradient-primary">Capabilities</span>
@@ -267,7 +267,7 @@ export const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <motion.div 
+          <motion.div
             whileHover={{ y: -10 }}
             className="glass-card p-8 rounded-3xl border border-white/10 hover:border-primary/30 transition-all duration-300 group"
           >
@@ -280,7 +280,7 @@ export const Home = () => {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             whileHover={{ y: -10 }}
             className="glass-card p-8 rounded-3xl border border-white/10 hover:border-blue-500/30 transition-all duration-300 group"
           >
@@ -293,7 +293,7 @@ export const Home = () => {
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             whileHover={{ y: -10 }}
             className="glass-card p-8 rounded-3xl border border-white/10 hover:border-emerald-500/30 transition-all duration-300 group"
           >
@@ -309,7 +309,7 @@ export const Home = () => {
 
         <div className="flex flex-col sm:flex-row items-center gap-4 pt-16 w-full justify-center">
           <Magnetic>
-            <button 
+            <button
               onClick={handleProjects}
               className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-red-600 transition-all duration-300 shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_40px_rgba(239,68,68,0.5)] relative overflow-hidden"
             >
@@ -318,9 +318,9 @@ export const Home = () => {
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
             </button>
           </Magnetic>
-          
+
           <Magnetic>
-            <button 
+            <button
               onClick={handleContact}
               className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-md"
             >

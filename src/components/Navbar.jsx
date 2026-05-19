@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Magnetic } from "./Magnetic";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,32 +51,34 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links */}
-        <ul className="hidden md:flex gap-8 font-medium">
+        <ul className="hidden md:flex gap-4 font-medium items-center">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <NavLink
-                to={link.path}
-                className={({ isActive }) =>
-                  `relative pb-1 transition-colors hover:text-white ${
-                    isActive ? "text-white font-semibold" : "text-gray-400"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {link.name}
-                    {isActive && (
-                      <motion.div
-                        layoutId="underline"
-                        className="absolute left-0 -bottom-1 w-full h-[2px] bg-primary rounded-full"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
-                  </>
-                )}
-              </NavLink>
+              <Magnetic>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `relative px-3 py-1.5 transition-colors hover:text-white ${
+                      isActive ? "text-white font-semibold" : "text-gray-400"
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <div className="relative">
+                      {link.name}
+                      {isActive && (
+                        <motion.div
+                          layoutId="underline"
+                          className="absolute left-0 -bottom-1 w-full h-[2px] bg-primary rounded-full shadow-[0_0_8px_rgba(239,68,68,0.5)]"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
+                    </div>
+                  )}
+                </NavLink>
+              </Magnetic>
             </li>
           ))}
         </ul>
