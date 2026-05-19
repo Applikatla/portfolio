@@ -7,6 +7,30 @@ import { ExternalLink, Code2 } from "lucide-react";
 export const Projects = () => {
   const projects = [
     {
+      title: "Blockchain Computing",
+      description: "A blockchain-based application where users can send transactions across the world, verify them using Merkle trees, create a basic DAO, and store files on the blockchain.",
+      tech: ["Blockchain", "Hardhat", "Solidity", "React", "Node", "MetaMask"],
+      github: "https://github.com/Applikatla/Blockchain_computing",
+    },
+    {
+      title: "Cosmonic Grpc",
+      description: "Designed and developed a modular gRPC-based backend architecture named Cosmonic, inspired by the structured design principles of the Cosmos SDK. The project focused on creating a scalable and maintainable microservice-oriented folder structure with clear separation of concerns across handlers, services, keepers, modules, protobuf definitions, and transaction/query layers. Implemented high-performance communication using gRPC and Protocol Buffers, enabling efficient inter-service interaction and extensible module development. The architecture emphasized clean code organization, dependency isolation, and production-ready backend patterns to support blockchain-style transaction processing, authentication workflows, and distributed system integration.",
+      tech: ["GO", "GRPC"],
+      github: "https://github.com/Applikatla/cosmonic-grpc",
+    },
+    {
+      title: "Cosmos SDK Blockchain Connector",
+      description: "Developed a Blockchain Connector service using Cosmos SDK and the custom Cosmonic gRPC architecture to enable seamless communication between backend microservices and blockchain networks. The project was designed with a modular, Cosmos SDK-inspired folder structure that separated handlers, services, keepers, protobuf definitions, transaction logic, and query layers for scalability and maintainability. Implemented gRPC-based communication for broadcasting transactions, querying blockchain state, managing accounts, and handling authentication flows efficiently across distributed services. The connector supported dynamic transaction execution, secure key management, and extensible module integration, providing a robust middleware layer for enterprise-grade blockchain applications and decentralized systems.",
+      tech: ["GO", "GRPC", "Cosmos SDK", "Blockchain"],
+      github: "https://github.com/Applikatla/blockchain_connector",
+    },
+    {
+      title: "Vesting Tokens Smartcontract",
+      description: "Developed a decentralized Vesting Smart Contract using Solidity to securely manage time-based release of cryptocurrency funds for beneficiaries. The contract implemented linear vesting logic, allowing tokens or ETH to be gradually unlocked over a predefined duration instead of being released all at once. Built features including beneficiary-based access control, automated vested amount calculation, secure fund release mechanisms, balance tracking, and event emission for transparency and auditability. The project focused on secure smart contract development practices, state management, and blockchain-based financial automation, demonstrating strong understanding of Ethereum, Solidity, and decentralized finance (DeFi) concepts.",
+      tech: ["Blockchain", "Solidity", "Ethereum"],
+      github: "https://github.com/Applikatla/vesting-appliction",
+    },
+    {
       title: "Fake Signature Detection",
       description: "Uses Convolutional Neural Networks (CNN) and the VGG16 model to provide a novel method for detecting counterfeit signatures. Involves image preprocessing techniques like gaussian blur, cropping, and edge detection to compare images and real signatures.",
       tech: ["Machine Learning", "CNN", "Image Processing", "OpenCV"],
@@ -17,12 +41,6 @@ export const Projects = () => {
       description: "Capable of tracing hand landmarks in the presence of an object in the hand using Google’s Mediapipe library, a cross-platform machine learning framework providing pre-trained computer vision models.",
       tech: ["OpenCV", "Computer Vision", "Mediapipe"],
       github: "https://github.com/Applikatla/ml-projects/tree/main/Hand%20landmark%20detection%20program",
-    },
-    {
-      title: "Blockchain Computing",
-      description: "A blockchain-based application where users can send transactions across the world, verify them using Merkle trees, create a basic DAO, and store files on the blockchain.",
-      tech: ["Blockchain", "Hardhat", "Solidity", "React", "Node", "MetaMask"],
-      github: "https://github.com/Applikatla/Blockchain_computing",
     },
     {
       title: "Family Trip Tracker",
@@ -48,7 +66,7 @@ export const Projects = () => {
   return (
     <div className="min-h-screen flex flex-col relative bg-background">
       <Navbar />
-      
+
       <main className="flex-grow pt-32 pb-20 px-6 max-w-7xl mx-auto w-full z-10">
         <motion.div
           initial="hidden"
@@ -68,12 +86,12 @@ export const Projects = () => {
           </div>
 
           {/* Projects Grid */}
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
             variants={containerVariants}
           >
             {projects.map((project, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ y: -8 }}
@@ -98,7 +116,7 @@ export const Projects = () => {
                 <div className="space-y-6">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, techIndex) => (
-                      <span 
+                      <span
                         key={techIndex}
                         className="px-3 py-1 bg-white/5 text-gray-300 text-sm font-medium rounded-full border border-white/5 group-hover:border-white/10 transition-colors"
                       >
@@ -108,7 +126,7 @@ export const Projects = () => {
                   </div>
 
                   <div className="pt-4 border-t border-white/10 flex items-center justify-between relative z-10">
-                    <a 
+                    <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -117,8 +135,8 @@ export const Projects = () => {
                       <img src="/images/github-original.svg" alt="GitHub" className="w-5 h-5 opacity-70 group-hover:opacity-100" />
                       <span className="font-medium">View Code</span>
                     </a>
-                    
-                    <a 
+
+                    <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
