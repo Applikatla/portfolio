@@ -1,9 +1,113 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import Navbar from "./Navbar";
 import { Footer } from "./Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Code2, X } from "lucide-react";
+
+const ProjectCard = ({ project, variants, activeProject, setActiveProject }) => {
+  const cardRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      variants={variants}
+      whileHover={{ y: -8 }}
+      className="glass-card rounded-[2rem] p-8 flex flex-col h-full group transition-all duration-300 relative overflow-hidden border border-white/[0.05] hover:border-white/[0.1] hover:shadow-[0_15px_40px_rgba(0,0,0,0.4)]"
+    >
+      {/* Spotlight Border (Laser Tracer) */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem] z-20"
+        style={{
+          padding: "1px",
+          background: `radial-gradient(150px circle at ${mousePos.x}px ${mousePos.y}px, rgba(239, 68, 68, 0.4), transparent 80%)`,
+          WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          WebkitMaskComposite: "xor",
+          maskComposite: "exclude",
+        }}
+      />
+
+      {/* Holographic Glossy Glass Shimmer */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+        style={{
+          background: `radial-gradient(300px circle at ${mousePos.x}px ${mousePos.y}px, rgba(239, 68, 68, 0.05), rgba(255, 255, 255, 0.03), transparent 75%)`,
+        }}
+      />
+
+      {/* Background Soft Glow (Ambient) */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full filter blur-[50px] group-hover:bg-primary/10 transition-colors duration-500"></div>
+
+      <div className="flex items-center gap-4 mb-4 relative z-20">
+        <div className="p-3 bg-white/5 rounded-xl text-primary border border-white/10 group-hover:border-primary/30 transition-colors">
+          <Code2 size={24} />
+        </div>
+        <h2 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">
+          {project.title}
+        </h2>
+      </div>
+
+      <div className="text-gray-400 mb-6 flex-grow leading-relaxed relative z-20 text-base font-light">
+        {project.description.length > 150 
+          ? `${project.description.slice(0, 150)}...` 
+          : project.description}
+        {project.description.length > 150 && (
+          <button 
+            onClick={() => setActiveProject(project)}
+            className="text-primary hover:text-white ml-2 font-medium transition-colors"
+          >
+            Read More
+          </button>
+        )}
+      </div>
+
+      <div className="space-y-6 relative z-20">
+        <div className="flex flex-wrap gap-2">
+          {project.tech.map((tech, techIndex) => (
+            <span
+              key={techIndex}
+              className="px-3 py-1 bg-white/5 text-gray-300 text-xs font-mono rounded-lg border border-white/5 group-hover:border-white/10 transition-colors"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+          >
+            <img src="/images/github-original.svg" alt="GitHub" className="w-5 h-5 opacity-70 group-hover:opacity-100 invert" />
+            <span className="font-medium text-sm">View Code</span>
+          </a>
+
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white border border-white/10 hover:border-primary transition-all duration-300"
+          >
+            <ExternalLink size={16} />
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export const Projects = () => {
   const [activeProject, setActiveProject] = useState(null);
@@ -111,72 +215,13 @@ export const Projects = () => {
             variants={containerVariants}
           >
             {projects.map((project, index) => (
-              <motion.div
+              <ProjectCard
                 key={index}
+                project={project}
                 variants={itemVariants}
-                whileHover={{ y: -8 }}
-                className="glass-card rounded-3xl p-8 flex flex-col h-full group transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_30px_rgba(239,68,68,0.15)] relative overflow-hidden"
-              >
-                {/* Background Glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full filter blur-[50px] group-hover:bg-primary/20 transition-colors duration-500"></div>
-
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-white/5 rounded-xl text-primary">
-                    <Code2 size={24} />
-                  </div>
-                  <h2 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h2>
-                </div>
-
-                <div className="text-gray-400 mb-6 flex-grow leading-relaxed">
-                  {project.description.length > 150 
-                    ? `${project.description.slice(0, 150)}...` 
-                    : project.description}
-                  {project.description.length > 150 && (
-                    <button 
-                      onClick={() => setActiveProject(project)}
-                      className="text-primary hover:text-white ml-2 font-medium transition-colors"
-                    >
-                      Read More
-                    </button>
-                  )}
-                </div>
-
-                <div className="space-y-6">
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-white/5 text-gray-300 text-sm font-medium rounded-full border border-white/5 group-hover:border-white/10 transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between relative z-10">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-                    >
-                      <img src="/images/github-original.svg" alt="GitHub" className="w-5 h-5 opacity-70 group-hover:opacity-100 invert" />
-                      <span className="font-medium">View Code</span>
-                    </a>
-
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300"
-                    >
-                      <ExternalLink size={18} />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
+                activeProject={activeProject}
+                setActiveProject={setActiveProject}
+              />
             ))}
           </motion.div>
         </motion.div>

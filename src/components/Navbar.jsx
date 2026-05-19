@@ -31,10 +31,9 @@ const Navbar = () => {
 
   return (
     <>
-      <div 
-        className={`mx-auto flex justify-between items-center px-6 md:px-20 py-4 fixed z-50 top-0 w-full transition-all duration-300 ${
-          scrolled ? 'glass-nav shadow-lg' : 'bg-transparent'
-        }`}
+      <div
+        className={`mx-auto flex justify-between items-center px-6 md:px-20 py-4 fixed z-50 top-0 w-full transition-all duration-300 ${scrolled ? 'glass-nav shadow-lg' : 'bg-transparent'
+          }`}
       >
         <NavLink to="/" className="cursor-pointer text-white text-2xl font-bold tracking-wider">
           <span className="text-primary font-black">K</span>eshav
@@ -58,8 +57,7 @@ const Navbar = () => {
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
-                    `relative px-3 py-1.5 transition-colors hover:text-white ${
-                      isActive ? "text-white font-semibold" : "text-gray-400"
+                    `relative px-3 py-1.5 transition-colors hover:text-white ${isActive ? "text-white font-semibold" : "text-gray-400"
                     }`
                   }
                 >
@@ -98,8 +96,7 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-xl font-medium transition-colors ${
-                    isActive ? "text-primary" : "text-gray-300 hover:text-white"
+                  `text-xl font-medium transition-colors ${isActive ? "text-primary" : "text-gray-300 hover:text-white"
                   }`
                 }
                 onClick={() => setIsOpen(false)}

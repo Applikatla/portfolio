@@ -58,13 +58,13 @@ export const About = () => {
       <Navbar />
 
       <main className="flex-grow pt-28 pb-20 px-6 max-w-7xl mx-auto w-full z-10">
-        
+
         {/* Parallax Background Text */}
         <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-screen z-[-1]">
           <ParallaxText baseVelocity={150}>BLOCKCHAIN</ParallaxText>
         </div>
 
-        <motion.div 
+        <motion.div
           className="flex flex-col lg:flex-row gap-16"
           initial="hidden"
           animate="visible"
@@ -93,15 +93,15 @@ export const About = () => {
 
             <div className="flex flex-wrap gap-4 pt-4">
               <div className="flex gap-2">
-                <a 
-                  href="/files/Keshav.pdf" 
+                <a
+                  href="/files/Keshav.pdf"
                   download="Keshav_Resume.pdf"
                   className="flex items-center gap-2 px-5 py-3 bg-primary/10 text-primary border border-primary/20 rounded-xl hover:bg-primary hover:text-white transition-all duration-300"
                 >
                   <Download size={18} />
                   Resume
                 </a>
-                <a 
+                <a
                   href="https://drive.google.com/file/d/10BHUrenDbNBr8VPx3kZv3t8jMrAjE0Ps/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -111,14 +111,14 @@ export const About = () => {
                   <ExternalLink size={18} />
                 </a>
               </div>
-              <button 
+              <button
                 onClick={handleClick}
                 className="flex items-center gap-2 px-5 py-3 bg-white/5 text-white border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300"
               >
                 <MessageCircle size={18} />
                 Let's Connect
               </button>
-              <button 
+              <button
                 onClick={handle}
                 className="flex items-center gap-2 px-5 py-3 bg-white/5 text-white border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300"
               >
@@ -133,7 +133,7 @@ export const About = () => {
             <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
               Technical <span className="text-gradient-primary">Skills</span>
             </h2>
-            <motion.div 
+            <motion.div
               className="grid grid-cols-3 sm:grid-cols-4 gap-4"
               variants={containerVariants}
             >
@@ -160,6 +160,9 @@ export const About = () => {
           </motion.div>
         </motion.div>
 
+        {/* GitHub Graph Section */}
+        <GithubGraph />
+
         {/* Hacker Terminal Section */}
         <motion.div 
           variants={itemVariants}
@@ -174,9 +177,6 @@ export const About = () => {
           </div>
           <HackerTerminal />
         </motion.div>
-
-        {/* GitHub Graph Section */}
-        <GithubGraph />
       </main>
 
       <Footer />

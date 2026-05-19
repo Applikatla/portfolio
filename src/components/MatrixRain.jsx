@@ -65,7 +65,7 @@ export const MatrixRain = ({ isActive }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}
-      className="fixed inset-0 z-[1] pointer-events-none opacity-20 md:opacity-30 mix-blend-screen"
+      className="fixed inset-0 z-[1] pointer-events-none opacity-10 md:opacity-15 mix-blend-screen"
     >
       <canvas ref={canvasRef} className="w-full h-full" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/50 to-[#050505]"></div>
