@@ -1,127 +1,140 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { Footer } from "./Footer";
+import { motion } from "framer-motion";
+import { ExternalLink, Code2 } from "lucide-react";
 
 export const Projects = () => {
-  const commonStyles =
-    "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-lg font-light text-white rounded-2xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg";
+  const projects = [
+    {
+      title: "Fake Signature Detection",
+      description: "Uses Convolutional Neural Networks (CNN) and the VGG16 model to provide a novel method for detecting counterfeit signatures. Involves image preprocessing techniques like gaussian blur, cropping, and edge detection to compare images and real signatures.",
+      tech: ["Machine Learning", "CNN", "Image Processing", "OpenCV"],
+      github: "https://github.com/Applikatla/Fake-Signatures-Detection",
+    },
+    {
+      title: "Hand Landmark Detection",
+      description: "Capable of tracing hand landmarks in the presence of an object in the hand using Google’s Mediapipe library, a cross-platform machine learning framework providing pre-trained computer vision models.",
+      tech: ["OpenCV", "Computer Vision", "Mediapipe"],
+      github: "https://github.com/Applikatla/ml-projects/tree/main/Hand%20landmark%20detection%20program",
+    },
+    {
+      title: "Blockchain Computing",
+      description: "A blockchain-based application where users can send transactions across the world, verify them using Merkle trees, create a basic DAO, and store files on the blockchain.",
+      tech: ["Blockchain", "Hardhat", "Solidity", "React", "Node", "MetaMask"],
+      github: "https://github.com/Applikatla/Blockchain_computing",
+    },
+    {
+      title: "Family Trip Tracker",
+      description: "Allows users to track countries they have traveled to worldwide. Features flexibility to add multiple users to share and maintain travel records collaboratively using a robust PostgreSQL database.",
+      tech: ["HTML", "CSS", "EJS", "Express", "Node", "PostgreSQL"],
+      github: "https://github.com/Applikatla/Family-tracker",
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   return (
-    <>
+    <div className="min-h-screen flex flex-col relative bg-background">
       <Navbar />
-      <section className="projects">
-        <div className="mt-20 text-center text-3xl mb-5">Projects</div>
-        <div className="text-left px-10 mb-20">
-          <div>
-            <h1>-- Fake signature detection:</h1>
-            <br />
-            <p className="px-10">
-              This work uses the capabilities of Convolutional Neural Networks
-              (CNN) and the VGG16 model to provide a novel method for detecting
-              counterfeit signatures. In light of the growing incidence of
-              signature forging across multiple industries, our research tackles
-              the requirement for a dependable and effective detection system.
-              Our approach starts with preparing signature photos to improve
-              their quality so that the analysis that follows is founded on
-              clean, well-resolved data. Our method’s central component is a
-              comparison between these modified images and real signatures
-              utilizing CNN and VGG16, two different algorithms, with some
-              preprocessing techniques like gaussian blur, cropping, edge
-              detection etc Tech:Mechine learning, CNN, image procesing, openCV,
-              computer vision.
-            </p>
-            <br />
-            <a
-              className="flex gap-2 px-10"
-              target="_blank"
-              href="https://github.com/Applikatla/Fake-Signatures-Detection"
-            >
-              -- github
-              <img
-                className="preview"
-                src="images/git-original.svg"
-                alt="githubImg"
-              />
-            </a>
+      
+      <main className="flex-grow pt-32 pb-20 px-6 max-w-7xl mx-auto w-full z-10">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="space-y-12"
+        >
+          {/* Header */}
+          <div className="text-center space-y-4">
+            <motion.h1 variants={itemVariants} className="text-4xl md:text-5xl font-bold">
+              Featured <span className="text-gradient-primary">Projects</span>
+            </motion.h1>
+            <motion.div variants={itemVariants} className="h-1 w-24 bg-primary rounded-full mx-auto"></motion.div>
+            <motion.p variants={itemVariants} className="text-gray-400 max-w-2xl mx-auto pt-4 text-lg">
+              A collection of my work across machine learning, computer vision, blockchain, and full-stack web development.
+            </motion.p>
           </div>
-          <br />
-          <div>
-            <h1>-- Hand Landmark Detection In Presence Of Object:</h1>
-            <br />
-            <p className="px-10">
-              This work is capable of tracing hand land marks in presence of
-              object in our hand, we used google’s mediapipe library which is a
-              cross platform machine learning frame work that provides a variety
-              of pre trained models for computer vision to achieve the desired
-              result. Tech: Opencv, computer vision, mediapipe.
-            </p>
-            <br />
-            <a
-              className="flex gap-2 px-10"
-              target="_blank"
-              href="https://github.com/Applikatla/ml-projects/tree/main/Hand%20landmark%20detection%20program"
-            >
-              -- github
-              <img
-                className="preview"
-                src="images/git-original.svg"
-                alt="githubImg"
-              />
-            </a>
-          </div>
-          <br />
-          <div>
-            <h1>-- Blockchain Computing:</h1>
-            <br />
-            <p className="px-10">
-              Which is a blockchain Based Application where a user can send
-              transactions accross the word and can verify using merkel tree,
-              can create a basic DAO, can store there file in blockchain. Tech:
-              Blockchain, hardhat, smart contracts, Ethereum, react, node,
-              express, APIs, Matamask.
-            </p>
-            <br />
-            <a
-              className="flex gap-2 px-10"
-              target="_blank"
-              href="https://github.com/Applikatla/Blockchain_computing"
-            >
-              -- github
-              <img
-                className="preview"
-                src="images/git-original.svg"
-                alt="githubImg"
-              />
-            </a>
-          </div>
-          <br />
-          <div>
-            <h1>-- Family trip tracker:</h1>
-            <br />
-            <p className="px-10">
-              This website allows users to track the countries they have
-              traveled to worldwide. It features flexibility to add multiple
-              users, such as family members, to share and maintain travel
-              records collaboratively. A PostgreSQL database is used to ensure
-              robust and reliable data storage. Tech: HTML, CSS, JS, ejs,
-              express, node, postgres.
-            </p>
-            <br />
-            <a
-              className="flex gap-2 px-10"
-              target="_blank"
-              href="https://github.com/Applikatla/Family-tracker"
-            >
-              -- github
-              <img
-                className="preview"
-                src="images/git-original.svg"
-                alt="githubImg"
-              />
-            </a>
-          </div>
-        </div>
-      </section>
-      <Footer/>
-    </>
+
+          {/* Projects Grid */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            variants={containerVariants}
+          >
+            {projects.map((project, index) => (
+              <motion.div 
+                key={index}
+                variants={itemVariants}
+                whileHover={{ y: -8 }}
+                className="glass-card rounded-3xl p-8 flex flex-col h-full group transition-all duration-300 hover:border-primary/30 hover:shadow-[0_8px_30px_rgba(239,68,68,0.15)] relative overflow-hidden"
+              >
+                {/* Background Glow */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full filter blur-[50px] group-hover:bg-primary/20 transition-colors duration-500"></div>
+
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 bg-white/5 rounded-xl text-primary">
+                    <Code2 size={24} />
+                  </div>
+                  <h2 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h2>
+                </div>
+
+                <p className="text-gray-400 mb-6 flex-grow leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="space-y-6">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, techIndex) => (
+                      <span 
+                        key={techIndex}
+                        className="px-3 py-1 bg-white/5 text-gray-300 text-sm font-medium rounded-full border border-white/5 group-hover:border-white/10 transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t border-white/10 flex items-center justify-between relative z-10">
+                    <a 
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                    >
+                      <img src="/images/github-original.svg" alt="GitHub" className="w-5 h-5 opacity-70 group-hover:opacity-100" />
+                      <span className="font-medium">View Code</span>
+                    </a>
+                    
+                    <a 
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300"
+                    >
+                      <ExternalLink size={18} />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </main>
+
+      <Footer />
+    </div>
   );
 };

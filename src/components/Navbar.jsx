@@ -1,168 +1,112 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
+    { name: "Experience", path: "/experience" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
     <>
-      <div className="nav bg-black mx-auto flex justify-between items-center px-5 md:px-20 py-5 fixed z-10 top-0 shadow-lg w-full">
-        <span className="cursor-pointer text-white text-xl font-bold">
-          <span className="text-red-600 font-bold hover:underline decoration-red-600 cursor-pointer">
-            K
-          </span>
-          eshav
-        </span>
+      <div 
+        className={`mx-auto flex justify-between items-center px-6 md:px-20 py-4 fixed z-50 top-0 w-full transition-all duration-300 ${
+          scrolled ? 'glass-nav shadow-lg' : 'bg-transparent'
+        }`}
+      >
+        <NavLink to="/" className="cursor-pointer text-white text-2xl font-bold tracking-wider">
+          <span className="text-primary font-black">K</span>eshav
+        </NavLink>
 
         {/* Hamburger menu for small screens */}
         <div className="md:hidden">
           <button
             onClick={toggleDropdown}
-            className="text-white text-2xl focus:outline-none"
+            className="text-white hover:text-primary transition-colors focus:outline-none"
           >
-            ☰
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
         {/* Navigation Links */}
-        <ul className="hidden md:flex gap-5 font-bold">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? "underline decoration-red-600 font-bold"
-                  : "hover:underline decoration-red-600"
-              }
-            >
-              <span className="text-red-600">H</span>ome
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive
-                  ? "underline decoration-red-600 font-bold"
-                  : "hover:underline decoration-red-600"
-              }
-            >
-              <span className="text-red-600">A</span>bout
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                isActive
-                  ? "underline decoration-red-600 font-bold"
-                  : "hover:underline decoration-red-600"
-              }
-            >
-              <span className="text-red-600">C</span>ontact
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/projects"
-              className={({ isActive }) =>
-                isActive
-                  ? "underline decoration-red-600 font-bold"
-                  : "hover:underline decoration-red-600"
-              }
-            >
-              <span className="text-red-600">P</span>rojects
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/experience"
-              className={({ isActive }) =>
-                isActive
-                  ? "underline decoration-red-600 font-bold"
-                  : "hover:underline decoration-red-600"
-              }
-            >
-              <span className="text-red-600">E</span>xperience
-            </NavLink>
-          </li>
+        <ul className="hidden md:flex gap-8 font-medium">
+          {navLinks.map((link) => (
+            <li key={link.name}>
+              <NavLink
+                to={link.path}
+                className={({ isActive }) =>
+                  `relative pb-1 transition-colors hover:text-white ${
+                    isActive ? "text-white font-semibold" : "text-gray-400"
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {link.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="underline"
+                        className="absolute left-0 -bottom-1 w-full h-[2px] bg-primary rounded-full"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
+                  </>
+                )}
+              </NavLink>
+            </li>
+          ))}
         </ul>
-
-        {/* Dropdown Menu */}
-        {isOpen && (
-          <ul className="absolute top-16 left-0 bg-black w-full p-5 flex flex-col gap-4 font-bold md:hidden">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "underline decoration-red-600 font-bold text-white"
-                    : "hover:underline decoration-red-600 text-white"
-                }
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="text-red-600">H</span>ome
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive
-                    ? "underline decoration-red-600 font-bold text-white"
-                    : "hover:underline decoration-red-600 text-white"
-                }
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="text-red-600">A</span>bout
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive
-                    ? "underline decoration-red-600 font-bold text-white"
-                    : "hover:underline decoration-red-600 text-white"
-                }
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="text-red-600">C</span>ontact
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/projects"
-                className={({ isActive }) =>
-                  isActive
-                    ? "underline decoration-red-600 font-bold text-white"
-                    : "hover:underline decoration-red-600 text-white"
-                }
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="text-red-600">P</span>rojects
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/experience"
-                className={({ isActive }) =>
-                  isActive
-                    ? "underline decoration-red-600 font-bold text-white"
-                    : "hover:underline decoration-red-600 text-white"
-                }
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="text-red-600">E</span>xperience
-              </NavLink>
-            </li>
-          </ul>
-        )}
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="fixed top-[68px] left-0 w-full glass-nav flex flex-col items-center py-6 gap-6 z-40 md:hidden border-b border-white/10 overflow-hidden"
+          >
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                className={({ isActive }) =>
+                  `text-xl font-medium transition-colors ${
+                    isActive ? "text-primary" : "text-gray-300 hover:text-white"
+                  }`
+                }
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </NavLink>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
