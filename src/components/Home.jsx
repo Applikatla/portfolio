@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "./Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, Terminal, Blocks, Server, ShieldCheck } from "lucide-react";
 
 const TITLES = [
   "Backend Developer",
@@ -11,6 +11,40 @@ const TITLES = [
   "Problem Solver",
   "Tech Enthusiast"
 ];
+
+const TechMarquee = () => {
+  const techs = [
+    "Go", "React", "Node.js", "Solidity", "PostgreSQL", "Kafka", "Redis", "gRPC", "Docker", "NestJS", "Hyperledger", "Cosmos SDK"
+  ];
+  
+  return (
+    <div className="w-full overflow-hidden py-16 relative bg-[#050505] border-y border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)] z-20">
+      {/* Gradient masks for smooth fade on edges */}
+      <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-[#050505] to-transparent z-10"></div>
+      <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-[#050505] to-transparent z-10"></div>
+      
+      <div className="flex whitespace-nowrap">
+        <motion.div 
+          className="flex gap-12 md:gap-24 px-6 md:px-12 items-center w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 40,
+            ease: "linear"
+          }}
+        >
+          {/* Double the array for seamless infinite scroll */}
+          {[...techs, ...techs, ...techs, ...techs].map((tech, idx) => (
+            <span key={idx} className="text-4xl md:text-6xl font-black text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.15)] tracking-wider uppercase hover:text-white/80 transition-colors duration-300 cursor-default">
+              {tech}
+            </span>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+};
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -68,24 +102,22 @@ export const Home = () => {
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden bg-[#050505]">
       {/* Immersive Animated Background Layers */}
-      
-      {/* Glowing Orbs */}
       <motion.div 
         variants={blobVariants} animate="animate"
-        className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-primary/20 rounded-full filter blur-[120px] z-0 pointer-events-none"
+        className="fixed top-[10%] left-[10%] w-[500px] h-[500px] bg-primary/20 rounded-full filter blur-[120px] z-0 pointer-events-none"
       />
       <motion.div 
         variants={blobVariants2} animate="animate"
-        className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] bg-blue-600/15 rounded-full filter blur-[150px] z-0 pointer-events-none"
+        className="fixed bottom-[10%] right-[10%] w-[600px] h-[600px] bg-blue-600/15 rounded-full filter blur-[150px] z-0 pointer-events-none"
       />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b from-transparent via-[#050505]/50 to-[#050505] z-0 pointer-events-none"></div>
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b from-transparent via-[#050505]/50 to-[#050505] z-0 pointer-events-none"></div>
 
       <Navbar />
 
-      {/* Main Content */}
-      <main className="flex-grow flex items-center justify-center pt-28 pb-12 px-6 z-10 w-full">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center pt-20 px-6 z-10 w-full">
         <motion.div 
-          className="max-w-7xl w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-8"
+          className="max-w-7xl w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-8 pb-20"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -188,27 +220,101 @@ export const Home = () => {
                 </motion.div>
               ))}
             </motion.div>
-            
           </motion.div>
         </motion.div>
-      </main>
 
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none"
-      >
-        <span className="text-xs text-gray-500 uppercase tracking-widest font-medium">Scroll</span>
+        {/* Scroll Indicator */}
         <motion.div 
-          animate={{ y: [0, 8, 0] }} 
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center p-1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none"
         >
-          <motion.div className="w-1 h-2 bg-gray-400 rounded-full" />
+          <span className="text-xs text-gray-500 uppercase tracking-widest font-medium">Scroll to Explore</span>
+          <motion.div 
+            animate={{ y: [0, 8, 0] }} 
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center p-1"
+          >
+            <motion.div className="w-1 h-2 bg-gray-400 rounded-full" />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </section>
+
+      {/* Infinite Scrolling Tech Marquee */}
+      <TechMarquee />
+
+      {/* Core Capabilities Section */}
+      <section className="py-32 px-6 max-w-7xl mx-auto w-full z-10 relative">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
+            Core <span className="text-gradient-primary">Capabilities</span>
+          </h2>
+          <div className="h-1 w-24 bg-primary rounded-full mx-auto"></div>
+          <p className="text-gray-400 max-w-2xl mx-auto pt-4 text-lg">
+            Specialized in building robust backend architectures and next-generation decentralized solutions.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div 
+            whileHover={{ y: -10 }}
+            className="glass-card p-8 rounded-3xl border border-white/10 hover:border-primary/30 transition-all duration-300 group"
+          >
+            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+              <Blocks size={28} />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">Blockchain Engineering</h3>
+            <p className="text-gray-400 leading-relaxed">
+              Developing smart contracts, decentralized applications (dApps), and integrating enterprise blockchain frameworks like Cosmos SDK and Hyperledger Fabric.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ y: -10 }}
+            className="glass-card p-8 rounded-3xl border border-white/10 hover:border-blue-500/30 transition-all duration-300 group"
+          >
+            <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 transition-transform">
+              <Server size={28} />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">Backend Architecture</h3>
+            <p className="text-gray-400 leading-relaxed">
+              Designing high-performance, scalable microservices using Go, Node.js, and NestJS, with robust communication layers like gRPC and Kafka.
+            </p>
+          </motion.div>
+
+          <motion.div 
+            whileHover={{ y: -10 }}
+            className="glass-card p-8 rounded-3xl border border-white/10 hover:border-emerald-500/30 transition-all duration-300 group"
+          >
+            <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-6 group-hover:scale-110 transition-transform">
+              <ShieldCheck size={28} />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4">Secure Infrastructure</h3>
+            <p className="text-gray-400 leading-relaxed">
+              Implementing Zero-Knowledge Proofs, RBAC, Privileged Access Management (PAM), and secure token handling for enterprise identity systems.
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center gap-4 pt-16 w-full justify-center">
+          <button 
+            onClick={handleProjects}
+            className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-red-600 transition-all duration-300 shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_40px_rgba(239,68,68,0.5)] transform hover:-translate-y-1 relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-2xl"></div>
+            <span className="relative z-10">Explore My Work</span>
+            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+          </button>
+          
+          <button 
+            onClick={handleContact}
+            className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 text-white font-bold rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/30 transition-all duration-300 backdrop-blur-md transform hover:-translate-y-1"
+          >
+            Contact Me
+          </button>
+        </div>
+      </section>
 
       <Footer />
     </div>
