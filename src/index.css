@@ -67,14 +67,26 @@
   --color-primary: #ef4444;
 }
 
-/* Classy, Lightweight Hacker Mode */
+/* Classy, Lightweight Developer Mode (IDE Theme) */
 body.hacker-mode {
-  --color-primary: #00e676 !important; /* Premium Hacker Green */
+  --color-primary: #00e5ff !important; /* Cyber Cyan / Developer Theme Accent */
 }
 
-/* Subtle gradient header accent */
+/* Dynamic Dotted Grid Background in Developer Mode */
+body.hacker-mode::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background-image: radial-gradient(rgba(0, 229, 255, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Subtle gradient header accent (Cyber Cyan to IDE Purple) */
 body.hacker-mode .text-gradient-primary {
-  background-image: linear-gradient(to right, #00e676, #00b0ff) !important;
+  background-image: linear-gradient(to right, #00e5ff, #c678dd) !important;
   color: transparent !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
@@ -82,14 +94,14 @@ body.hacker-mode .text-gradient-primary {
 
 /* Smooth color transition on hovered cards */
 body.hacker-mode .glass-card:hover {
-  border-color: rgba(0, 230, 118, 0.25) !important;
-  box-shadow: 0 8px 30px rgba(0, 230, 118, 0.08) !important;
+  border-color: rgba(0, 229, 255, 0.3) !important;
+  box-shadow: 0 8px 30px rgba(0, 229, 255, 0.1) !important;
 }
 
 /* Custom indicator glows */
 body.hacker-mode [layoutId="underline"] {
-  background-color: #00e676 !important;
-  box-shadow: 0 0 8px rgba(0, 230, 118, 0.6) !important;
+  background-color: #00e5ff !important;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.6) !important;
 }
 
 /* Monospace fonts limited to tags and data components to keep readability perfect */
