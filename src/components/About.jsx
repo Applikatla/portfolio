@@ -5,6 +5,8 @@ import { Footer } from "./Footer";
 import { motion } from "framer-motion";
 import { Download, MessageCircle, ArrowRight, ExternalLink } from "lucide-react";
 import { HackerTerminal } from "./HackerTerminal";
+import { ParallaxText } from "./ParallaxText";
+import { GithubGraph } from "./GithubGraph";
 
 export const About = () => {
   const navigate = useNavigate();
@@ -56,6 +58,12 @@ export const About = () => {
       <Navbar />
 
       <main className="flex-grow pt-28 pb-20 px-6 max-w-7xl mx-auto w-full z-10">
+        
+        {/* Parallax Background Text */}
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-screen z-[-1]">
+          <ParallaxText baseVelocity={150}>BLOCKCHAIN</ParallaxText>
+        </div>
+
         <motion.div 
           className="flex flex-col lg:flex-row gap-16"
           initial="hidden"
@@ -166,6 +174,9 @@ export const About = () => {
           </div>
           <HackerTerminal />
         </motion.div>
+
+        {/* GitHub Graph Section */}
+        <GithubGraph />
       </main>
 
       <Footer />

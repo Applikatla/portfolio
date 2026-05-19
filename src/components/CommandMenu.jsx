@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Search, Home, User, Briefcase, Mail, Download, Command } from 'lucide-react';
+import { playSuccessSound, playHoverSound } from '../utils/sound';
 
 export const CommandMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,10 @@ export const CommandMenu = () => {
     const down = (e) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setIsOpen((open) => !open);
+        setIsOpen((open) => {
+          if (!open) playSuccessSound();
+          return !open;
+        });
       }
       if (e.key === 'Escape') {
         setIsOpen(false);
@@ -78,6 +82,7 @@ export const CommandMenu = () => {
                 filteredActions.map((action) => (
                   <button
                     key={action.id}
+                    onMouseEnter={() => playHoverSound()}
                     onClick={action.action}
                     className="w-full flex items-center px-4 py-3 text-left rounded-xl hover:bg-white/5 group transition-colors"
                   >

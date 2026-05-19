@@ -5,6 +5,7 @@ import { Footer } from "./Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Terminal, Blocks, Server, ShieldCheck } from "lucide-react";
 import { Magnetic } from "./Magnetic";
+import { ParallaxText } from "./ParallaxText";
 
 const TITLES = [
   "Backend Developer",
@@ -251,6 +252,10 @@ export const Home = () => {
 
       {/* Core Capabilities Section */}
       <section className="py-32 px-6 max-w-7xl mx-auto w-full z-10 relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen z-[-1]">
+          <ParallaxText baseVelocity={-200}>ARCHITECTURE</ParallaxText>
+        </div>
+        
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold text-white">
             Core <span className="text-gradient-primary">Capabilities</span>

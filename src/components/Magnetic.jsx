@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { playHoverSound } from '../utils/sound';
 
 export const Magnetic = ({ children }) => {
   const ref = useRef(null);
@@ -23,6 +24,7 @@ export const Magnetic = ({ children }) => {
     <motion.div
       className="inline-block"
       ref={ref}
+      onMouseEnter={playHoverSound}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
