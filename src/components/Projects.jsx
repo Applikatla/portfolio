@@ -150,7 +150,7 @@ export const Projects = () => {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
                     >
-                      <img src="/images/github-original.svg" alt="GitHub" className="w-5 h-5 opacity-70 group-hover:opacity-100" />
+                      <img src="/images/github-original.svg" alt="GitHub" className="w-5 h-5 opacity-70 group-hover:opacity-100 invert" />
                       <span className="font-medium">View Code</span>
                     </a>
 
@@ -231,7 +231,7 @@ export const Projects = () => {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
                   >
-                    <img src="/images/github-original.svg" alt="GitHub" className="w-6 h-6 opacity-70 hover:opacity-100" />
+                    <img src="/images/github-original.svg" alt="GitHub" className="w-6 h-6 opacity-70 hover:opacity-100 invert" />
                     <span className="font-medium text-lg">View Source Code</span>
                   </a>
 

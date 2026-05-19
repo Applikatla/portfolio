@@ -25,7 +25,7 @@ export const About = () => {
     { name: "NestJS", icon: "/images/nestjs.svg" },
     { name: "Express", icon: "/images/express-original.svg", bg: "bg-white/90 p-1.5 rounded-lg" },
     { name: "PostgreSQL", icon: "/images/postgresql-original.svg" },
-    { name: "Kafka", icon: "/images/kafka.svg" },
+    { name: "Kafka", icon: "/images/kafka.svg", bg: "bg-white/90 p-1.5 rounded-lg" },
     { name: "Redis", icon: "/images/redis.svg" },
     { name: "Solidity", icon: "/images/solidity-original.svg", bg: "bg-white/90 p-1.5 rounded-lg" },
     { name: "Blockchain", icon: "/images/blockchain-svgrepo-com.svg", bg: "bg-white/90 p-1.5 rounded-lg" },
@@ -34,7 +34,7 @@ export const About = () => {
     { name: "Hardhat", icon: "/images/hardhat-seeklogo.svg" },
     { name: "Tailwind CSS", icon: "/images/tailwindcss-original.svg" },
     { name: "Git", icon: "/images/git-original.svg" },
-    { name: "GitHub", icon: "/images/github-original.svg" },
+    { name: "GitHub", icon: "/images/github-original.svg", bg: "bg-white/90 p-1.5 rounded-lg" },
   ];
 
   const containerVariants = {

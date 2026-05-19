@@ -138,7 +138,7 @@ export const Contact = () => {
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white transition-all duration-300 hover:-translate-y-1"
               >
-                <img src="/images/github-original.svg" alt="GitHub" className="w-6 h-6 opacity-70 hover:opacity-100" />
+                <img src="/images/github-original.svg" alt="GitHub" className="w-6 h-6 opacity-70 hover:opacity-100 invert" />
               </a>
               <a 
                 href="https://www.linkedin.com/in/keshavardhan-appikatla-39063322a/" 
