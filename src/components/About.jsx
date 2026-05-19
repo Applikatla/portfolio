@@ -18,23 +18,23 @@ export const About = () => {
 
   const skills = [
     { name: "JavaScript", icon: "/images/javascript-original.svg" },
-    { name: "HTML5", icon: "/images/html5-original.svg" },
-    { name: "CSS3", icon: "/images/css3-original.svg" },
+    { name: "Go", icon: "/images/Go-Logo_Aqua.svg", bg: "bg-white/90 p-1 rounded-lg" },
     { name: "Python", icon: "/images/python-original.svg" },
-    { name: "Solidity", icon: "/images/solidity-original.svg", bg: "bg-white/90 p-1.5 rounded-lg" },
     { name: "React", icon: "/images/react-original.svg" },
-    { name: "PostgreSQL", icon: "/images/postgresql-original.svg" },
     { name: "Node.js", icon: "/images/nodejs-original.svg" },
+    { name: "NestJS", icon: "/images/nestjs.svg" },
     { name: "Express", icon: "/images/express-original.svg", bg: "bg-white/90 p-1.5 rounded-lg" },
-    { name: "Postman", icon: "/images/postman-original.svg" },
-    { name: "Git", icon: "/images/git-original.svg" },
-    { name: "GitHub", icon: "/images/github-original.svg" },
+    { name: "PostgreSQL", icon: "/images/postgresql-original.svg" },
+    { name: "Kafka", icon: "/images/kafka.svg" },
+    { name: "Redis", icon: "/images/redis.svg" },
+    { name: "Solidity", icon: "/images/solidity-original.svg", bg: "bg-white/90 p-1.5 rounded-lg" },
     { name: "Blockchain", icon: "/images/blockchain-svgrepo-com.svg", bg: "bg-white/90 p-1.5 rounded-lg" },
     { name: "Ethereum", icon: "/images/ethereum-foundation-seeklogo.svg" },
     { name: "Truffle", icon: "/images/truffle-seeklogo.svg" },
     { name: "Hardhat", icon: "/images/hardhat-seeklogo.svg" },
-    { name: "Ganache", icon: "/images/ganache-seeklogo.svg" },
     { name: "Tailwind CSS", icon: "/images/tailwindcss-original.svg" },
+    { name: "Git", icon: "/images/git-original.svg" },
+    { name: "GitHub", icon: "/images/github-original.svg" },
   ];
 
   const containerVariants = {
@@ -72,13 +72,13 @@ export const About = () => {
 
             <div className="text-gray-300 text-lg leading-relaxed space-y-6">
               <p>
-                Hi, I'm <span className="text-white font-semibold">Keshavardhan</span>! I'm currently pursuing Computer Science and Engineering at Vellore Institute of Technology, Vellore.
+                Hi, I'm <span className="text-white font-semibold">Keshavardhan</span>! I completed my B.Tech in Computer Science and Engineering at Vellore Institute of Technology, Vellore (2021 - 2025).
               </p>
               <p>
-                I have a strong foundation in programming languages like Python, JavaScript, and Solidity. My proficiency includes modern web technologies like HTML, CSS, JavaScript, Node.js, React.js, Express.js, PostgreSQL, and MongoDB.
+                I am currently working as a <span className="text-white font-semibold">Backend Blockchain Developer</span> at Artiqulus Technologies, where I build secure authentication platforms and decentralized applications using Go, gRPC, Node.js, and various blockchain frameworks.
               </p>
               <p>
-                I am deeply passionate about decentralized technologies, with hands-on experience in Ethereum, Bitcoin Blockchain, Smart Contracts, Truffle, Hardhat, and Ganache. I also have experience with enterprise authentication platforms, RBAC, and IoT integrations.
+                I have a strong foundation in modern backend engineering and distributed systems. My proficiency includes Go, Node.js, NestJS, Python, PostgreSQL, Redis, and Kafka. I am deeply passionate about decentralized technologies, with hands-on experience in Ethereum, Cosmos SDK, Hyperledger Fabric, Smart Contracts, and Zero-Knowledge Proofs.
               </p>
             </div>
 

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { Footer } from "./Footer";
-import { motion } from "framer-motion";
-import { ExternalLink, Code2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Code2, X } from "lucide-react";
 
 export const Projects = () => {
+  const [activeProject, setActiveProject] = useState(null);
+
   const projects = [
     {
       title: "Blockchain Computing",
@@ -115,9 +117,19 @@ export const Projects = () => {
                   </h2>
                 </div>
 
-                <p className="text-gray-400 mb-6 flex-grow leading-relaxed">
-                  {project.description}
-                </p>
+                <div className="text-gray-400 mb-6 flex-grow leading-relaxed">
+                  {project.description.length > 150 
+                    ? `${project.description.slice(0, 150)}...` 
+                    : project.description}
+                  {project.description.length > 150 && (
+                    <button 
+                      onClick={() => setActiveProject(project)}
+                      className="text-primary hover:text-white ml-2 font-medium transition-colors"
+                    >
+                      Read More
+                    </button>
+                  )}
+                </div>
 
                 <div className="space-y-6">
                   <div className="flex flex-wrap gap-2">
@@ -159,6 +171,85 @@ export const Projects = () => {
       </main>
 
       <Footer />
+
+      {/* Project Modal */}
+      <AnimatePresence>
+        {activeProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveProject(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto glass-card rounded-3xl p-8 border border-white/10 shadow-2xl"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setActiveProject(null)}
+                className="absolute top-6 right-6 p-2 rounded-full bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white transition-colors"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="flex items-center gap-3 mb-6 pr-12">
+                <div className="p-3 bg-white/5 rounded-xl text-primary flex-shrink-0">
+                  <Code2 size={24} />
+                </div>
+                <h2 className="text-3xl font-bold text-white">
+                  {activeProject.title}
+                </h2>
+              </div>
+
+              <div className="prose prose-invert max-w-none">
+                <p className="text-gray-300 text-lg leading-relaxed whitespace-pre-line mb-8">
+                  {activeProject.description}
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex flex-wrap gap-2">
+                  {activeProject.tech.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-3 py-1 bg-white/5 text-gray-300 text-sm font-medium rounded-full border border-white/5"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+                  <a
+                    href={activeProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                  >
+                    <img src="/images/github-original.svg" alt="GitHub" className="w-6 h-6 opacity-70 hover:opacity-100" />
+                    <span className="font-medium text-lg">View Source Code</span>
+                  </a>
+
+                  <a
+                    href={activeProject.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                  >
+                    <ExternalLink size={20} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 };
